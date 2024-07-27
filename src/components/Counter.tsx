@@ -1,4 +1,7 @@
-export default function Counter({ todos }) {
+import { useTodosContext } from "../libs/hooks";
+
+export default function Counter() {
+  const { todos } = useTodosContext();
   const totalTodos = todos.length;
 
   let completedTodos = 0;

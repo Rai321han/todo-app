@@ -1,10 +1,9 @@
 import DeleteButton from "./DeleteButton";
+import { useTodosContext } from "../libs/hooks";
 
-export default function TodoList({
-  todos,
-  handleCompleteTodo,
-  handleDeleteTodo,
-}) {
+export default function TodoList() {
+  const { handleCompleteTodo, handleDeleteTodo, todos } = useTodosContext();
+
   const renderedTodos = todos.map((todo) => {
     return (
       <li
@@ -21,7 +20,7 @@ export default function TodoList({
         </span>
 
         <DeleteButton
-          onClick={(event) => {
+          onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
             event.stopPropagation();
             handleDeleteTodo(todo.id);
           }}
@@ -29,6 +28,8 @@ export default function TodoList({
       </li>
     );
   });
+
+  //
   return (
     <ul>
       {todos.length === 0 && (
