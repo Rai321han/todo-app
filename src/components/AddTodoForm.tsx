@@ -10,6 +10,7 @@ export default function AddTodoForm() {
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        if (todoText === "") return;
         handleAddTodo(todoText);
         setTodoText("");
       }}
